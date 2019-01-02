@@ -12,6 +12,8 @@ RUN mkdir /scrapy_project/
 RUN cd /scrapy_project/ && scrapy startproject scrapy_topic_search
 COPY ./src/spiders/*.py /scrapy_project/scrapy_topic_search/scrapy_topic_search/spiders/
 COPY ./src/settings.py /scrapy_project/scrapy_topic_search/scrapy_topic_search/
+COPY ./src/search_results_to_hit_count.py /scrapy_project/
+COPY ./src/run_service.sh /scrapy_project/
 
-
-CMD touch /tmp/test.log && tail -f /tmp/test.log
+#CMD touch /tmp/test.log && tail -f /tmp/test.log
+CMD bash /scrapy_project/run_service.sh
