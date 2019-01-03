@@ -1,0 +1,11 @@
+version: "2"
+services:
+  scrapy_topic_search:
+    build:
+      context: ./build
+      dockerfile: ./Dockerfile
+
+    volumes:
+     - ./search_outputs:/mnt/search_outputs/
+
+

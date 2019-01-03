@@ -17,3 +17,6 @@ COPY ./src/run_service.sh /scrapy_project/
 
 #CMD touch /tmp/test.log && tail -f /tmp/test.log
 CMD bash /scrapy_project/run_service.sh
+
+RUN mkdir /mnt/search_outputs/
+VOLUME /mnt/search_outputs/
