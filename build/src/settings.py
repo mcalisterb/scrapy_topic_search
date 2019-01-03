@@ -9,6 +9,10 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+import sys
+sys.path.insert(0, '/mnt/topic_search_settings/')
+import topic_search_settings
+
 BOT_NAME = 'scrapy_topic_search'
 
 SPIDER_MODULES = ['scrapy_topic_search.spiders']
@@ -66,11 +70,10 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy_wayback_machine.WaybackMachineMiddleware': 5,
 }
 
-WAYBACK_MACHINE_TIME_RANGE = (20181201, 20181218)
+WAYBACK_MACHINE_TIME_RANGE = topic_search_settings.TIME_RANGE
 
-START_URLS = ['http://www.news24.com']
-#START_URLS = ['http://www.cnn.com']
-TOPIC = "shack fire"
+START_URLS = topic_search_settings.SEARCH_URLS
+TOPIC = topic_search_settings.SEARCH_TOPIC
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

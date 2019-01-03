@@ -7,5 +7,6 @@ services:
 
     volumes:
      - ./search_outputs:/mnt/search_outputs/
+     - ./settings/:/mnt/topic_search_settings/
 
 

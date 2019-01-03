@@ -19,4 +19,4 @@ COPY ./src/run_service.sh /scrapy_project/
 CMD bash /scrapy_project/run_service.sh
 
 RUN mkdir /mnt/search_outputs/
-VOLUME /mnt/search_outputs/
+RUN mkdir /mnt/topic_search_settings/
