@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 import json
 import sys
 
@@ -41,12 +42,18 @@ if __name__ == '__main__':
             else:
                 time_series_results[curr_time_stamp] = [1,result['items']]
 
-        sorted_times = time_series_results.keys()
-        sorted(sorted_times)
+        sorted_times = sorted(time_series_results.keys())
+        sorted_time_series_list = []
+        #sorted(sorted_times)
         for time in sorted_times:
+            d = {"Time stamp":str(datetime.fromtimestamp(time)), "Hit counts":time_series_results[time][0], "Search results":time_series_results[time][1]}
+            sorted_time_series_list.append(d)
+            #print(d)
+            
             #out_str = "test"
-            out_str = "Time stamp :" + str(time) + ", Hit counts: " + str(time_series_results[time][0]) + ", Search results: " + str(time_series_results[time][1])
-            print(out_str)
+            #out_str = "{\"Time stamp\":\"" + str(datetime.fromtimestamp(time)) + "\", \"Hit counts\":" + str(time_series_results[time][0]) + ", \"Search results\": " + str(time_series_results[time][1]) + "}"
+            #print(out_str)
+        print(json.dumps(sorted_time_series_list))
 
     except Exception as e:
         print("Error while trying to read input file lines and convert to time series, check for correct formatting!")
