@@ -1,5 +1,8 @@
 #rm /tmp/snapshots.jl
 echo "Running scrapy search ..."
+if [ -f /tmp/snapshots.jl ] ; then
+    rm /tmp/snapshots.jl
+fi
 cd /scrapy_project/scrapy_topic_search && scrapy crawl topic_search_spider -o /tmp/snapshots.jl &>> /mnt/search_outputs/scrapy-search.log
 echo "Converting results to time series ..."
 
